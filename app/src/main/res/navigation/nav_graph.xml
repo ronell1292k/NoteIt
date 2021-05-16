@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="ronell.noteit.ui.home.HomeFragment"
+        android:label="My Notes"
+        tools:layout="@layout/home_fragment">
+
+        <action
+            android:id="@+id/actionAddNote"
+            app:destination="@id/addNoteFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="ronell.noteit.edit.EditFragment"
+        android:label="Add Note"
+        tools:layout="@layout/edit_fragment">
+        <action
+            android:id="@+id/actionSaveNote"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>
