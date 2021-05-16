@@ -1,7 +1,7 @@
-package ronell.noteit.ui.main
+package ronell.noteit.ui.home
 
 import androidx.lifecycle.ViewModel
 
-class MainViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }
