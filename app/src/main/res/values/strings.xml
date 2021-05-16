@@ -3,4 +3,6 @@
     <string name="title_hint">Title</string>
     <string name="note_hint">Content</string>
     <string name="new_note">New Note</string>
+    <string name="placeholder_title">My First Note</string>
+    <string name="placeholder_body">Note Description</string>
 </resources>
