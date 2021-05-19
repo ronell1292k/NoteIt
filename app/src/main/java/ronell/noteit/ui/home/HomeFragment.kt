@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import ronell.noteit.R
+import ronell.noteit.databinding.HomeFragmentBinding
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.home_fragment) {
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -20,7 +23,16 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.home_fragment, container, false)
+        val binding = DataBindingUtil.inflate<HomeFragmentBinding>(
+            inflater,
+            R.layout.home_fragment,
+            container,
+            false
+        )
+        binding.newNoteButton.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.actionAddNote)
+        )
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -28,5 +40,4 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
 }
