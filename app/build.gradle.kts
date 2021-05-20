@@ -42,18 +42,36 @@ android {
 dependencies {
 
     implementation("androidx.core:core-ktx:1.3.2")
+
+    // AppCompat
     implementation("androidx.appcompat:appcompat:1.2.0")
+
+    // Material Design Components
     implementation("com.google.android.material:material:1.3.0")
+
+    // Constraint Layout
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+
+    // LifeCycle
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
-    implementation("androidx.room:room-common:2.3.0")
-    implementation("androidx.room:room-runtime:2.3.0")
+
+    // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
-    implementation("com.google.android.material:material:1.3.0")
+
+    // RecyclerView
     implementation("androidx.recyclerview:recyclerview:1.1.0")
+
+    // Testing
     testImplementation("junit:junit:4.+")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+
+    // Room
     annotationProcessor("androidx.room:room-compiler:2.3.0")
+    implementation("androidx.room:room-runtime:2.3.0")
+    implementation("androidx.room:room-ktx:2.3.0")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
 }
