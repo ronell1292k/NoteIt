@@ -1,10 +1,9 @@
 package ronell.noteit.database
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
+@Dao
 interface NoteDao {
 
     @Query("SELECT * FROM Note_table WHERE NoteId = :key")
@@ -20,6 +19,6 @@ interface NoteDao {
     suspend fun delete(note: Note)
 
     @Query("SELECT * FROM Note_table ORDER BY NoteId DESC")
-    suspend fun getAllNotes(): List<Note>
+    fun getAllNotes(): LiveData<List<Note>>
 
 }
