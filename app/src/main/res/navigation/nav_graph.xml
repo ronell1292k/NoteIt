@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/addNoteFragment"
-        android:name="ronell.noteit.edit.EditFragment"
+        android:name="ronell.noteit.ui.edit.EditFragment"
         android:label="Add Note"
         tools:layout="@layout/edit_fragment">
         <action

@@ -7,13 +7,13 @@
 
         <variable
             name="editFragment"
-            type="ronell.noteit.edit.EditFragment" />
+            type="ronell.noteit.ui.edit.EditFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".edit.EditFragment">
+        tools:context=".ui.edit.EditFragment">
 
 
         <ScrollView
