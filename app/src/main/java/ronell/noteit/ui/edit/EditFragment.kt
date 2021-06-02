@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import ronell.noteit.R
 import ronell.noteit.database.Note
 import ronell.noteit.databinding.EditFragmentBinding
@@ -55,6 +56,8 @@ class EditFragment : Fragment() {
         val note = Note(title, content)
         viewModel.insertNote(note)
         Toast.makeText(context, "Note saved!", Toast.LENGTH_SHORT).show()
+        val action = EditFragmentDirections.actionSaveNote()
+        view?.findNavController()?.navigate(action)
     }
 
 }
