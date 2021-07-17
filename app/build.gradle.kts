@@ -43,13 +43,13 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.5.0")
+    implementation("androidx.core:core-ktx:1.6.0")
 
     // AppCompat
     implementation("androidx.appcompat:appcompat:1.3.0")
 
     // Material Design Components
-    implementation("com.google.android.material:material:1.3.0")
+    implementation("com.google.android.material:material:1.4.0")
 
     // Constraint Layout
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
@@ -67,8 +67,8 @@ dependencies {
 
     // Testing
     testImplementation("junit:junit:4.+")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 
     // Room
     kapt("androidx.room:room-compiler:2.3.0")
