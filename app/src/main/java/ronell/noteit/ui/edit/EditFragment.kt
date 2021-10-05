@@ -7,10 +7,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ronell.noteit.R
 import ronell.noteit.database.Note
 import ronell.noteit.databinding.EditFragmentBinding
 
+@AndroidEntryPoint
 class EditFragment : Fragment() {
     private val viewModel: EditViewModel by viewModels()
     private var _binding: EditFragmentBinding? = null

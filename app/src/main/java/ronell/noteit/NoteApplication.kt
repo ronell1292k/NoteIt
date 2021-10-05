@@ -1,12 +1,7 @@
 package ronell.noteit
 
 import android.app.Application
-import ronell.noteit.database.NoteDatabase
-import ronell.noteit.repository.NoteRepository
+import dagger.hilt.android.HiltAndroidApp
 
-class NoteApplication : Application() {
-
-
-    private val noteDatabase by lazy { NoteDatabase.getDatabase(this) }
-    val repository by lazy { NoteRepository(noteDatabase.noteDao()) }
-}
+@HiltAndroidApp
+class NoteApplication : Application()

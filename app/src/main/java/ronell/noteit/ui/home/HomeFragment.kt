@@ -11,10 +11,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import ronell.noteit.R
 import ronell.noteit.adapter.NoteAdapter
 import ronell.noteit.databinding.HomeFragmentBinding
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private val viewModel: HomeViewModel by viewModels()
