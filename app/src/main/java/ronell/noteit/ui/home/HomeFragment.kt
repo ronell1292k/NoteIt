@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -17,20 +16,20 @@ import ronell.noteit.adapter.NoteAdapter
 import ronell.noteit.databinding.HomeFragmentBinding
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(R.layout.home_fragment) {
+class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
 
+    private var _binding: HomeFragmentBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = DataBindingUtil.inflate<HomeFragmentBinding>(
-            inflater,
-            R.layout.home_fragment,
-            container,
-            false
-        )
+        _binding = HomeFragmentBinding.inflate(inflater, container, false)
+
         binding.newNoteButton.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.actionAddNote)
         )
@@ -46,8 +45,6 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
                 StaggeredGridLayoutManager(3, GridLayoutManager.VERTICAL)
 
         recyclerView.adapter = NoteAdapter()
-
         return binding.root
     }
-
 }

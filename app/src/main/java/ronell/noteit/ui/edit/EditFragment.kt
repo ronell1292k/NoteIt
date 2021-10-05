@@ -3,7 +3,6 @@ package ronell.noteit.ui.edit
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -14,24 +13,18 @@ import ronell.noteit.databinding.EditFragmentBinding
 
 @AndroidEntryPoint
 class EditFragment : Fragment() {
+
     private val viewModel: EditViewModel by viewModels()
     private var _binding: EditFragmentBinding? = null
     private val binding get() = _binding!!
-    private var note: Note? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = DataBindingUtil.inflate<EditFragmentBinding>(
-            inflater,
-            R.layout.edit_fragment,
-            container,
-            false
-        )
-
+        _binding = EditFragmentBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
-
         return binding.root
     }
 
@@ -43,9 +36,7 @@ class EditFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.save_button -> {
-                if (note != null) {
-                    saveNote()
-                }
+                saveNote()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -55,11 +46,14 @@ class EditFragment : Fragment() {
         val title = binding.editTitle.text.toString()
         val content = binding.editNote.text.toString()
 
-        val note = Note(title, content)
-        viewModel.insertNote(note)
-        Toast.makeText(context, "Note saved!", Toast.LENGTH_SHORT).show()
-        val action = EditFragmentDirections.actionSaveNote()
-        view?.findNavController()?.navigate(action)
+        if (title == "" || content == "") {
+            Toast.makeText(context, "Empty note", Toast.LENGTH_SHORT).show()
+        } else {
+            val note = Note(title, content)
+            viewModel.insertNote(note)
+            Toast.makeText(context, "Note saved!", Toast.LENGTH_SHORT).show()
+            val action = EditFragmentDirections.actionSaveNote()
+            view?.findNavController()?.navigate(action)
+        }
     }
-
 }
