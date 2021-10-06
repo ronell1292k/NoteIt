@@ -1,7 +1,7 @@
 package ronell.noteit.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
@@ -19,6 +19,6 @@ interface NoteDao {
     suspend fun delete(note: Note)
 
     @Query("SELECT * FROM Note_table ORDER BY NoteId DESC")
-    fun getAllNotes(): LiveData<List<Note>>
+    fun getAllNotes(): Flow<List<Note>>
 
 }

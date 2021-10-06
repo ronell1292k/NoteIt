@@ -1,6 +1,5 @@
 package ronell.noteit.ui.edit
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,14 +11,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EditViewModel @Inject constructor(private val repository: NoteRepository) : ViewModel() {
-
-    private val _allNotes: LiveData<List<Note>> = repository.getNotes
-    private var allNotes: LiveData<List<Note>>
-        get() = _allNotes
-
-    init {
-        allNotes = _allNotes
-    }
 
     fun insertNote(note: Note) {
         viewModelScope.launch(Dispatchers.IO) {
