@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     id("dagger.hilt.android.plugin")
+    id("com.google.devtools.ksp") version "1.5.31-1.0.0"
 }
 
 android {
@@ -67,12 +68,12 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.2.1")
 
     // Room
-    kapt("androidx.room:room-compiler:2.3.0")
-    implementation("androidx.room:room-runtime:2.3.0")
-    implementation("androidx.room:room-ktx:2.3.0")
+    ksp("androidx.room:room-compiler:2.4.0-beta01")
+    implementation("androidx.room:room-runtime:2.4.0-beta01")
+    implementation("androidx.room:room-ktx:2.4.0-beta01")
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.38.1")
