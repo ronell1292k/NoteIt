@@ -46,14 +46,22 @@ class EditFragment : Fragment() {
         val title = binding.editTitle.text.toString()
         val content = binding.editNote.text.toString()
 
-        if (title == "" || content == "") {
-            Toast.makeText(context, "Empty note", Toast.LENGTH_SHORT).show()
-        } else {
-            val note = Note(title, content)
-            viewModel.insertNote(note)
-            Toast.makeText(context, "Note saved!", Toast.LENGTH_SHORT).show()
-            val action = EditFragmentDirections.actionSaveNote()
-            view?.findNavController()?.navigate(action)
+        when {
+            title.isEmpty() -> {
+                binding.editTitle.error = "Enter title"
+                binding.editTitle.requestFocus()
+            }
+            content.isEmpty() -> {
+                binding.editNote.error = "Enter note body"
+                binding.editNote.requestFocus()
+            }
+            else -> {
+                val note = Note(title, content)
+                viewModel.insertNote(note)
+                Toast.makeText(context, "Note saved!", Toast.LENGTH_SHORT).show()
+                val action = EditFragmentDirections.actionSaveNote()
+                view?.findNavController()?.navigate(action)
+            }
         }
     }
 }

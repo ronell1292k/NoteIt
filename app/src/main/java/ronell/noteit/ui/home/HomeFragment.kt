@@ -1,6 +1,5 @@
 package ronell.noteit.ui.home
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +22,8 @@ class HomeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
 
+    val noteAdapter = NoteAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,17 +35,19 @@ class HomeFragment : Fragment() {
             Navigation.createNavigateOnClickListener(R.id.actionAddNote)
         )
 
-        val recyclerView = binding.notesGrid
-        recyclerView.setHasFixedSize(true)
+        binding.apply {
+            notesGrid.apply {
+                adapter = noteAdapter
+                layoutManager = StaggeredGridLayoutManager(
+                    2,
+                    GridLayoutManager.VERTICAL
+                )
+            }
+            viewModel.allNotes.observe(viewLifecycleOwner, {
+                noteAdapter.submitList(it)
+            })
+        }
 
-        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            binding.notesGrid.layoutManager =
-                StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
-        } else
-            binding.notesGrid.layoutManager =
-                StaggeredGridLayoutManager(3, GridLayoutManager.VERTICAL)
-
-        recyclerView.adapter = NoteAdapter()
         return binding.root
     }
 }
