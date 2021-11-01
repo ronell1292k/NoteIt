@@ -22,7 +22,11 @@ class HomeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
 
-    val noteAdapter = NoteAdapter()
+    private val noteAdapter = NoteAdapter {
+        // this is the click listener
+        // do whatever you want here
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
