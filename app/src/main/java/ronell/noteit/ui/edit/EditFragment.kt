@@ -17,6 +17,7 @@ class EditFragment : Fragment() {
     private val viewModel: EditViewModel by viewModels()
     private var _binding: EditFragmentBinding? = null
     private val binding get() = _binding!!
+    private var note: Note? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +27,15 @@ class EditFragment : Fragment() {
         _binding = EditFragmentBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        arguments?.let {
+            note = EditFragmentArgs.fromBundle(it).noteArg
+            binding.editTitle.setText(note?.noteTitle)
+            binding.editNote.setText(note?.noteBody)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import ronell.noteit.R
 import ronell.noteit.adapter.NoteAdapter
 import ronell.noteit.databinding.HomeFragmentBinding
 
@@ -22,12 +22,6 @@ class HomeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val noteAdapter = NoteAdapter {
-        // this is the click listener
-        // do whatever you want here
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,9 +29,15 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
 
-        binding.newNoteButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.actionAddNote)
-        )
+        binding.newNoteButton.setOnClickListener {
+            val action = HomeFragmentDirections.actionAddNote()
+            findNavController(it).navigate(action)
+        }
+
+        val noteAdapter = NoteAdapter {
+            val action = HomeFragmentDirections.actionAddNote(noteArg = it)
+            view?.findNavController()?.navigate(action)
+        }
 
         binding.apply {
             notesGrid.apply {
@@ -51,7 +51,6 @@ class HomeFragment : Fragment() {
                 noteAdapter.submitList(it)
             })
         }
-
         return binding.root
     }
 }
