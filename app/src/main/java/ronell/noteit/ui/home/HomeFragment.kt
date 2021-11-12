@@ -13,11 +13,12 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ronell.noteit.adapter.NoteAdapter
 import ronell.noteit.databinding.HomeFragmentBinding
+import ronell.noteit.ui.viewmodels.NoteViewModel
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: NoteViewModel by viewModels()
 
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!

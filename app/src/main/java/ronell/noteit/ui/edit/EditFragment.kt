@@ -10,11 +10,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import ronell.noteit.R
 import ronell.noteit.database.Note
 import ronell.noteit.databinding.EditFragmentBinding
+import ronell.noteit.ui.viewmodels.NoteViewModel
 
 @AndroidEntryPoint
 class EditFragment : Fragment() {
 
-    private val viewModel: EditViewModel by viewModels()
+    private val viewModel: NoteViewModel by viewModels()
     private var _binding: EditFragmentBinding? = null
     private val binding get() = _binding!!
     private var note: Note? = null
